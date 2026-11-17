@@ -1,0 +1,197 @@
+.ve-rail {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483647;
+  font-family: system-ui, sans-serif;
+}
+
+.ve-rail * {
+  box-sizing: border-box;
+}
+
+.ve-rail-surface {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background: #1a1a1a;
+  color: #fff;
+  transition: width 240ms cubic-bezier(0.34, 1.18, 0.64, 1);
+  animation: ve-rail-enter 360ms cubic-bezier(0.34, 1.18, 0.64, 1);
+}
+
+.ve-rail[data-expanded="true"] .ve-rail-surface {
+  width: 174px;
+}
+
+.ve-rail-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 5px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(12px) scale(0.94);
+  transform-origin: right center;
+  transition:
+    opacity 150ms ease,
+    transform 320ms cubic-bezier(0.34, 1.18, 0.64, 1),
+    visibility 150ms;
+}
+
+.ve-rail[data-expanded="true"] .ve-rail-controls {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 60ms;
+}
+
+.ve-rail-button {
+  position: relative;
+  flex: 0 0 34px;
+}
+
+.ve-rail button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgb(255 255 255 / 85%);
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    transform 100ms,
+    color 150ms;
+}
+
+.ve-rail button:hover:not(:disabled) {
+  background: rgb(255 255 255 / 12%);
+  color: #fff;
+}
+
+.ve-rail button:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.ve-rail button:focus-visible {
+  outline: 2px solid #3c82f7;
+  outline-offset: 2px;
+}
+
+.ve-rail button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.ve-rail button[aria-pressed="true"] {
+  color: #90baff;
+  background: rgb(60 130 247 / 15%);
+}
+
+.ve-rail .ve-rail-toggle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.ve-rail-divider {
+  flex: 0 0 1px;
+  height: 20px;
+  background: rgb(255 255 255 / 20%);
+}
+
+.ve-rail-placeholder {
+  flex: 0 0 34px;
+}
+
+.ve-rail-glyph path {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 160ms;
+}
+
+.ve-rail[data-expanded="true"] .ve-rail-top {
+  transform: translateY(5.25px) rotate(45deg) scaleX(1.1422494);
+}
+
+.ve-rail[data-expanded="true"] .ve-rail-middle {
+  transform: translateX(3.5px) rotate(-45deg) scaleX(2.4748737);
+}
+
+.ve-rail[data-expanded="true"] .ve-rail-bottom,
+.ve-rail[data-expanded="true"] .ve-rail-sparkle {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.ve-rail-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  padding: 2px 5px;
+  border-radius: 10px;
+  background: #3c82f7;
+  color: white;
+  font-size: 10px;
+  transition: opacity 150ms;
+}
+
+.ve-rail[data-expanded="true"] .ve-rail-badge {
+  opacity: 0;
+}
+
+.ve-rail-tooltip {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+}
+
+.ve-rail-button:hover .ve-rail-tooltip,
+.ve-rail-button:focus-within .ve-rail-tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.ve-rail svg {
+  fill: none;
+}
+
+@keyframes ve-rail-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ve-rail *,
+  .ve-rail-glyph path {
+    animation: none;
+    transition: none;
+  }
+}

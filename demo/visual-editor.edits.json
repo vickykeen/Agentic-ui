@@ -1,0 +1,12 @@
+[
+  {
+    "selector": "#card-two",
+    "instruction": "change color to dark red",
+    "patch": {
+      "css": {
+        "color": "darkred"
+      }
+    },
+    "updatedAt": "2026-11-17T04:06:11.291Z"
+  }
+]
