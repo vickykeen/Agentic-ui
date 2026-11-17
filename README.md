@@ -2,10 +2,7 @@
 
 Click any element on your site, describe the change, and AI edits the UI and content live. Edits are saved to your project so they survive a refresh.
 
-## Documentation
 
-- [docs/README.md](./docs/README.md) — package overview, architecture, API usage, and operational guidance
-- [DESIGN_GUIDE.md](./DESIGN_GUIDE.md) — product goals, interaction model, visual language, and accessibility requirements
 
 ## Install
 
